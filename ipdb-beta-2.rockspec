@@ -1,5 +1,5 @@
 package = "ipdb"
-version = "beta-1"
+version = "beta-2"
 source = {
   url = "git://github.com/ym/ipdb-c.git"
 }
@@ -16,7 +16,7 @@ build = {
   modules = {
     ipdb = {
       libraries = {"json-c"},
-      sources = {"ipdb.c", "ipdb.h", "ipdb-lua.c"}
+      sources = {"ipdb.c", "ipdb-lua.c"}
     }
   }
 }
