@@ -96,6 +96,11 @@ int ipdb_lua_find(lua_State *L)
             strncpy(tmp, body + p2 + 1, (size_t)p1 - p2);
             tmp[p1 - p2] = 0;
 
+            int lastChr = strlen(tmp) - 1;
+            if (tmp[lastChr] == '\t') {
+                tmp[lastChr] = 0;
+            }
+
             lua_pushstring(L, ipdb.r->meta->fields[f]);
             lua_pushfstring(L, tmp);
             lua_settable(L, -3);
@@ -130,7 +135,7 @@ static const struct luaL_Reg functions[] = {
 int luaopen_ipdb(lua_State *L)
 {
 
-#if defined(LUA_VERSION_NUM) && LUA_VERSION_NUM >= 530
+#if defined(LUA_VERSION_NUM) && LUA_VERSION_NUM >= 503
     lua_newtable(L);
     luaL_setfuncs(L, functions, 0);
 #else
