@@ -3,7 +3,7 @@
 #include <memory.h>
 #include "lua.h"
 #include "lauxlib.h"
-#include "./ipdb.c"
+#include "ipdb.h"
 
 struct
 {
