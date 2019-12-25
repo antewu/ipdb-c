@@ -129,7 +129,13 @@ static const struct luaL_Reg functions[] = {
 
 int luaopen_ipdb(lua_State *L)
 {
+
+#if defined(LUA_VERSION_NUM) && LUA_VERSION_NUM >= 530
     lua_newtable(L);
     luaL_setfuncs(L, functions, 0);
+#else
+    luaL_register(L, "ipdb", functions);
+#endif
+
     return 1;
 }
